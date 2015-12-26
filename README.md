@@ -1,4 +1,7 @@
 # tree-index
+
+[![Build Status](https://travis-ci.org/at15/tree-index.svg?branch=master)](https://travis-ci.org/at15/tree-index)
+
 B+ tree index for HDFS and Hive (experimental)
 
 This project was originally from a course project in [sjtu cs433](https://github.com/at15/cs433/tree/master/tree-index).
