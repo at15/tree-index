@@ -10,6 +10,7 @@ public class Shell {
     private static final Logger LOGGER = LoggerFactory.getLogger(Shell.class);
 
     public static void main(String[] args) {
-        // TODO: parse args
+        // TODO: parse args using commons cli
+        LOGGER.info("tree index shell started");
     }
 }

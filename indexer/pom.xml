@@ -11,5 +11,30 @@
 
     <artifactId>indexer</artifactId>
 
+    <description>
+        The mapreduce jobs and storage for BPTree index
+    </description>
+
+    <properties>
+        <mellowtech.version>2.2</mellowtech.version>
+        <mapdb.version>2.0.0-SNAPSHOT</mapdb.version>
+    </properties>
+
+    <dependencies>
+        <!-- NOTE: this require manually install the forked version https://github.com/at15/mellowtech-core -->
+        <dependency>
+            <groupId>org.mellowtech</groupId>
+            <artifactId>core</artifactId>
+            <version>${mellowtech.version}</version>
+        </dependency>
+        <!-- also, we can use mapdb for compare -->
+        <dependency>
+            <groupId>org.mapdb</groupId>
+            <artifactId>mapdb</artifactId>
+            <version>${mapdb.version}</version>
+        </dependency>
+
+    </dependencies>
+
 
 </project>
