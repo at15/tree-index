@@ -1,0 +1,11 @@
+language: java
+jdk:
+#  - oraclejdk8, the java7 version
+  - oraclejdk7
+  - openjdk7
+before_install:
+  - pip install --user codecov
+  - sh -c "git clone https://github.com/at15/mellowtech-core"
+  - sh -c "mellowtech-core/install.sh"
+after_success:
+  - codecov
