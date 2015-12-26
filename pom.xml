@@ -63,6 +63,10 @@
             <id>sonatype-snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
+        <repository>
+            <id>mellowtech-core-java7-fork</id>
+            <url>http://at15.github.io/mellowtech-core/repository</url>
+        </repository>
     </repositories>
 
 </project>
