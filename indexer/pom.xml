@@ -21,6 +21,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>io.dongyue.at15.tree-index</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
         <!-- NOTE: this require manually install the forked version https://github.com/at15/mellowtech-core -->
         <dependency>
             <groupId>org.mellowtech</groupId>
