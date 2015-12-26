@@ -1,6 +1,8 @@
 # tree-index
 
 [![Build Status](https://travis-ci.org/at15/tree-index.svg?branch=master)](https://travis-ci.org/at15/tree-index)
+[![codecov.io](https://codecov.io/github/at15/tree-index/coverage.svg?branch=master)](https://codecov.io/github/at15/tree-index?branch=master)
+![codecov.io](https://codecov.io/github/at15/tree-index/branch.svg?branch=master)
 
 B+ tree index for HDFS and Hive (experimental)
 
