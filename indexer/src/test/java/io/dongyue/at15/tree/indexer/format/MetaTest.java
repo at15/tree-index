@@ -21,4 +21,15 @@ public class MetaTest {
         Assert.assertEquals(5L, (long) m2.getCount());
         Assert.assertEquals("/usr/at15/test.idx", m2.getIndexPath());
     }
+
+    // TODO： test for exceptions
+
+    @Test
+    public void testToString() {
+        String full = "0\t10\t20\t5\t/usr/at15/test.idx";
+        Meta m2 = Meta.parse(full);
+        Assert.assertEquals(full, m2.toString());
+
+        Assert.assertEquals("10\t20\t5\t/usr/at15/test.idx",m2.withOutPartitionId());
+    }
 }

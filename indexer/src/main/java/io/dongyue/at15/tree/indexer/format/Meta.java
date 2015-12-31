@@ -102,5 +102,21 @@ public class Meta {
         this.indexPath = indexPath;
     }
 
+    // TODO: allow use different separator
+    public String withOutPartitionId() {
+        String s = start + DEFAULT_SEP + end;
+        if (count != null) {
+            s = s + DEFAULT_SEP + count;
+        }
+        if (indexPath != null) {
+            s = s + DEFAULT_SEP + indexPath;
+        }
+        return s;
+    }
+
+    @Override
+    public String toString() {
+        return partitionId + DEFAULT_SEP + withOutPartitionId();
+    }
 
 }
