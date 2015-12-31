@@ -2,6 +2,8 @@ package io.dongyue.at15.tree.indexer.format;
 
 /**
  * Created by at15 on 15-12-26.
+ *
+ * Parser comma/tab separated line to k-v/k-values
  */
 public class InputParser {
     protected final String separator;
@@ -17,8 +19,8 @@ public class InputParser {
     }
 
     public void parse(String input) {
-        // TODO: should use more efficient one
         cacheInput = input;
+        // TODO: should use more efficient one, like read char by char
         cache = input.split(separator);
     }
 

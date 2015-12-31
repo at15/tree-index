@@ -5,6 +5,8 @@ import org.junit.Test;
 
 /**
  * Created by at15 on 15-12-26.
+ *
+ * test custom input parser
  */
 public class InputParserTest {
     @Test
