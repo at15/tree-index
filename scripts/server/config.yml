@@ -1,0 +1,22 @@
+# The configuration file for tree index query server, dropwizard requires yml file to config
+
+server:
+  applicationConnectors:
+  - type: http
+    port: 8080
+    bindHost: 127.0.0.1 # only bind to loopback, and it is behind proxy, so
+  adminConnectors:
+  - type: http
+    port: 9100
+    bindHost: 127.0.0.1 # only bind to loopback
+  requestLog:
+    appenders:
+      - type: console
+
+logging:
+  level: INFO
+  loggers:
+    io.dropwizard: INFO
+    io.dongyue.at15.tree: DEBUG
+  appenders:
+      - type: console
