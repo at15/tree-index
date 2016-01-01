@@ -3,7 +3,6 @@ package io.dongyue.at15.tree.indexer;
 
 import io.dongyue.at15.tree.indexer.mapreduce.pre.PreSortConfig;
 import org.apache.commons.cli.*;
-import org.apache.commons.configuration.PropertiesConfiguration;
 
 import io.dongyue.at15.tree.indexer.mapreduce.pre.PreSortDriver;
 import org.apache.hadoop.util.ToolRunner;
@@ -17,20 +16,21 @@ public class Runner {
         Options options = new Options();
         options.addOption("job", true, "which job to run");
         options.addOption("base", true, "base path");
-        CommandLineParser parser = new DefaultParser();
+        // Exception in thread "main" java.lang.IllegalAccessError: tried to access method org.apache.commons.cli.Options.getOptionGroups()Ljava/util/Collection; from class org.apache.commons.cli.DefaultParser
+        CommandLineParser parser = new GnuParser();
         CommandLine cmd;
 
         try {
             cmd = parser.parse(options, args);
         } catch (ParseException err) {
             System.err.println("unable to parse arguments");
-            helpFormatter.printHelp("tree-index indexer runner", options);
+            helpFormatter.printHelp("indexer", options);
             return;
         }
 
         if (!cmd.hasOption("job")) {
             System.err.println("job is required");
-            helpFormatter.printHelp("tree-index indexer runner", options);
+            helpFormatter.printHelp("indexer", options);
             return;
         }
 
