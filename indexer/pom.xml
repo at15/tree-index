@@ -18,7 +18,6 @@
     <properties>
         <mellowtech.version>2.2</mellowtech.version>
         <mapdb.version>2.0.0-SNAPSHOT</mapdb.version>
-        <hadoop.version>2.7.1</hadoop.version>
     </properties>
 
     <dependencies>
