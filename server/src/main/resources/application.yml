@@ -1,0 +1,4 @@
+spring:
+#  main:
+  hadoop:
+    fsUri: hdfs://localhost:9000
