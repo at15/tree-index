@@ -1,6 +1,8 @@
 package io.dongyue.at15.tree.indexer;
 
 
+import io.dongyue.at15.tree.indexer.mapreduce.index.IndexConfig;
+import io.dongyue.at15.tree.indexer.mapreduce.index.IndexDriver;
 import io.dongyue.at15.tree.indexer.mapreduce.pre.PreSortConfig;
 import io.dongyue.at15.tree.indexer.mapreduce.sort.SortConfig;
 import io.dongyue.at15.tree.indexer.mapreduce.sort.SortDriver;
@@ -56,6 +58,15 @@ public class Runner {
                 config.fromBasePath(cmd.getOptionValue("base"));
             }
             int exitCode = ToolRunner.run(new SortDriver(), config.toArray());
+            System.exit(exitCode);
+        }
+
+        if (job.equals("index")) {
+            IndexConfig config = new IndexConfig();
+            if (cmd.hasOption("base")) {
+                config.fromBasePath(cmd.getOptionValue("base"));
+            }
+            int exitCode = ToolRunner.run(new IndexDriver(), config.toArray());
             System.exit(exitCode);
         }
 

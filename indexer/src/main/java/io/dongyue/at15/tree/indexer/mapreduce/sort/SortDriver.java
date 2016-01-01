@@ -49,7 +49,7 @@ public class SortDriver extends Configured implements Tool {
         SequenceFileInputFormat.setInputPaths(job, inputPath);
 
         // define the reducer
-        job.getConfiguration().set(SortReducer.META_BASE_PATH, metaPath.toString());
+        job.getConfiguration().set(SortReducer.META_BASE_CONFIG_NAME, metaPath.toString());
         job.setReducerClass(SortReducer.class);
         job.setNumReduceTasks(NUM_REDUCER);
         // use text for debug, use sequence is faster I guess

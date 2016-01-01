@@ -49,6 +49,10 @@ public class Meta {
         return partitionId;
     }
 
+    public String getPartitionIdAsString() {
+        return String.valueOf(partitionId);
+    }
+
     public void setPartitionId(String partitionId) {
         // TODO: check if valueOf return null
         setPartitionId(Integer.valueOf(partitionId));

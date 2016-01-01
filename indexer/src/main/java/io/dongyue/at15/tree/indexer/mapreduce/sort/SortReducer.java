@@ -19,7 +19,7 @@ import java.io.IOException;
 public class SortReducer extends
         Reducer<IntWritable, Text, IntWritable, Text> {
     private static final Logger LOGGER = LoggerFactory.getLogger(SortReducer.class);
-    public static final String META_BASE_PATH = "sort.meta.base";
+    public static final String META_BASE_CONFIG_NAME = "sort.meta.base";
     private Integer minKey;
     private Integer maxKey;
     private Long count;
@@ -31,7 +31,7 @@ public class SortReducer extends
         count = 0L;
         mos = new MultipleOutputs<IntWritable, Text>(context);
         // TODO: throw exception when it is not set
-        metaPath = configuration.get(META_BASE_PATH);
+        metaPath = configuration.get(META_BASE_CONFIG_NAME);
     }
 
     // write meat out in clean up stage
