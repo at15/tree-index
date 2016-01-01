@@ -16,6 +16,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>io.dongyue.at15.tree-index</groupId>
+            <artifactId>indexer</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
         <!-- Dropwizzard -->
         <dependency>
             <groupId>io.dropwizard</groupId>
