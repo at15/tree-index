@@ -13,6 +13,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Created by at15 on 16-1-1.
+ *
+ * Build index in local fs then upload to HDFS
  */
 public class IndexDriver extends Configured implements Tool {
     public static final Logger LOGGER = LoggerFactory.getLogger(IndexDriver.class);

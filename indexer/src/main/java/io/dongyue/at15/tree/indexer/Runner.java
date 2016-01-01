@@ -3,6 +3,8 @@ package io.dongyue.at15.tree.indexer;
 
 import io.dongyue.at15.tree.indexer.mapreduce.index.IndexConfig;
 import io.dongyue.at15.tree.indexer.mapreduce.index.IndexDriver;
+import io.dongyue.at15.tree.indexer.mapreduce.meta.MetaConfig;
+import io.dongyue.at15.tree.indexer.mapreduce.meta.MetaDriver;
 import io.dongyue.at15.tree.indexer.mapreduce.pre.PreSortConfig;
 import io.dongyue.at15.tree.indexer.mapreduce.sort.SortConfig;
 import io.dongyue.at15.tree.indexer.mapreduce.sort.SortDriver;
@@ -10,6 +12,8 @@ import org.apache.commons.cli.*;
 
 import io.dongyue.at15.tree.indexer.mapreduce.pre.PreSortDriver;
 import org.apache.hadoop.util.ToolRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by at15 on 16-1-1.
@@ -17,6 +21,8 @@ import org.apache.hadoop.util.ToolRunner;
  * Run map reduce job from command line
  */
 public class Runner {
+    public static final Logger LOGGER = LoggerFactory.getLogger(Runner.class);
+
     public static void main(String[] args) throws Exception {
         HelpFormatter helpFormatter = new HelpFormatter();
         Options options = new Options();
@@ -70,6 +76,17 @@ public class Runner {
             System.exit(exitCode);
         }
 
+        if (job.equals("meta")) {
+            MetaConfig config = new MetaConfig();
+            if (cmd.hasOption("base")) {
+                config.fromBasePath(cmd.getOptionValue("base"));
+            }
+//            LOGGER.info("input " + config.getInput());
+//            LOGGER.info("output " + config.getOutput());
+            int exitCode = ToolRunner.run(new MetaDriver(), config.toArray());
+            System.exit(exitCode);
+//            System.exit(10086);
+        }
         System.out.println("unsupported job or action" + args[0]);
     }
 }
