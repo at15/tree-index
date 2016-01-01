@@ -2,6 +2,8 @@ package io.dongyue.at15.tree.indexer;
 
 
 import io.dongyue.at15.tree.indexer.mapreduce.pre.PreSortConfig;
+import io.dongyue.at15.tree.indexer.mapreduce.sort.SortConfig;
+import io.dongyue.at15.tree.indexer.mapreduce.sort.SortDriver;
 import org.apache.commons.cli.*;
 
 import io.dongyue.at15.tree.indexer.mapreduce.pre.PreSortDriver;
@@ -9,6 +11,8 @@ import org.apache.hadoop.util.ToolRunner;
 
 /**
  * Created by at15 on 16-1-1.
+ * <p/>
+ * Run map reduce job from command line
  */
 public class Runner {
     public static void main(String[] args) throws Exception {
@@ -16,6 +20,7 @@ public class Runner {
         Options options = new Options();
         options.addOption("job", true, "which job to run");
         options.addOption("base", true, "base path");
+        // see https://github.com/at15/tree-index/issues/1
         // Exception in thread "main" java.lang.IllegalAccessError: tried to access method org.apache.commons.cli.Options.getOptionGroups()Ljava/util/Collection; from class org.apache.commons.cli.DefaultParser
         CommandLineParser parser = new GnuParser();
         CommandLine cmd;
@@ -42,6 +47,15 @@ public class Runner {
                 config.fromBasePath(cmd.getOptionValue("base"));
             }
             int exitCode = ToolRunner.run(new PreSortDriver(), config.toArray());
+            System.exit(exitCode);
+        }
+
+        if (job.equals("sort")) {
+            SortConfig config = new SortConfig();
+            if (cmd.hasOption("base")) {
+                config.fromBasePath(cmd.getOptionValue("base"));
+            }
+            int exitCode = ToolRunner.run(new SortDriver(), config.toArray());
             System.exit(exitCode);
         }
 

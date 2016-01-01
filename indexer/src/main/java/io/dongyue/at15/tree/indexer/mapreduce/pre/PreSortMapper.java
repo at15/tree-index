@@ -35,6 +35,7 @@ public class PreSortMapper extends
 
     // output specific column as key
     // TODO: may use the input parser class
+    // TODO: try catch to avoid crash on wrong format data
     @Override
     public void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {
