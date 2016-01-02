@@ -2,16 +2,21 @@ package io.dongyue.at15.tree.server;
 
 import io.dongyue.at15.tree.server.manager.IndexManager;
 import io.dongyue.at15.tree.server.manager.MetaManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.hadoop.fs.FsShell;
 
 @SpringBootApplication
 public class ServerApplication implements CommandLineRunner {
+    @Autowired
+    private FsShell shell;
+
     @Override
     public void run(String... strings) throws Exception {
-        MetaManager.init();
-        IndexManager.init();
+        MetaManager.init(shell);
+        IndexManager.init(shell);
     }
 
     public static void main(String[] args) {

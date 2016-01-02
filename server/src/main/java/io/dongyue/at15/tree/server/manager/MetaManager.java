@@ -2,6 +2,7 @@ package io.dongyue.at15.tree.server.manager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.hadoop.fs.FsShell;
 
 import java.io.File;
 
@@ -12,12 +13,14 @@ public class MetaManager {
     public static final String localMetaFolder = "/tmp/tree/meta";
     private static final Logger LOGGER = LoggerFactory.getLogger(MetaManager.class);
     private static boolean booted = false;
+    private static FsShell shell;
 
-    public static void init() {
+    public static void init(FsShell shell) {
         if (booted) {
             LOGGER.info("meta manager already booted");
             return;
         }
+        MetaManager.shell = shell;
         // create local folder
         File metaFolder = new File(localMetaFolder);
         if (!metaFolder.exists()) {
@@ -30,4 +33,6 @@ public class MetaManager {
             LOGGER.info("local meta folder " + localMetaFolder + " exists ");
         }
     }
+
+
 }
