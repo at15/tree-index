@@ -1,4 +1,4 @@
-package io.dongyue.at15.tree.indexer.format;
+package io.dongyue.at15.tree.common.format;
 
 /**
  * Created by at15 on 15-12-26.
@@ -40,7 +40,7 @@ public class Meta {
     }
 
     public Integer[] getRange() {
-        // FIXME: range is redundant, but can just return {start,end};
+        // FIXME: range is redundant, but can't just return {start,end};
         Integer[] range = {start, end};
         return range;
     }

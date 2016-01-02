@@ -28,7 +28,7 @@ public class SortConfig implements Config {
     public void fromBasePath(String base) {
         setInput(base + "/pre-sort/out");
         setOutput(base + "/sort/out");
-        setPartition(base + "part.lst");
+        setPartition(base + "/part.lst");
         setMeta(base + "/sort/meta");
     }
 

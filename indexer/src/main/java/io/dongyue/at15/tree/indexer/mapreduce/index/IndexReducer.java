@@ -1,6 +1,6 @@
 package io.dongyue.at15.tree.indexer.mapreduce.index;
 
-import io.dongyue.at15.tree.indexer.format.Meta;
+import io.dongyue.at15.tree.common.format.Meta;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -72,8 +72,6 @@ public class IndexReducer extends
         Path idxFile = new Path(indexFilePath);
         String indexFileRemotePath = remoteIndex + "/" + indexFileName + ".idx";
         Path idxFileHDFS = new Path(indexFileRemotePath);
-        // TODO: create the folder in driver
-        // NOTE: MUST create folder before this step
         fs.copyFromLocalFile(true, true, idxFile, idxFileHDFS);
         LOGGER.info("upload completed");
 
