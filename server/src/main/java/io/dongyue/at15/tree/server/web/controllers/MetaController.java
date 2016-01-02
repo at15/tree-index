@@ -32,7 +32,7 @@ public class MetaController {
         return "lalala";
     }
 
-    @RequestMapping(value = "/{table}/meta", headers = "Accept=*/*", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{table}/meta")
     public ResponseEntity<MetaTable> meta(@PathVariable String table) throws IOException {
         // try to load from memory
         // try to load from hdfs and then into memory
