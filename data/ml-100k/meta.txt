@@ -1,0 +1,5 @@
+0	1	189	189	/user/at15/warehouse/ml-100k/index/idx/L3VzZXIvYXQxNS93YXJlaG91c2UvbWwtMTAway9zb3J0L291dC9wYXJ0LXItMDAwMDA=.idx
+1	190	377	188	/user/at15/warehouse/ml-100k/index/idx/L3VzZXIvYXQxNS93YXJlaG91c2UvbWwtMTAway9zb3J0L291dC9wYXJ0LXItMDAwMDE=.idx
+2	378	566	189	/user/at15/warehouse/ml-100k/index/idx/L3VzZXIvYXQxNS93YXJlaG91c2UvbWwtMTAway9zb3J0L291dC9wYXJ0LXItMDAwMDI=.idx
+3	567	754	188	/user/at15/warehouse/ml-100k/index/idx/L3VzZXIvYXQxNS93YXJlaG91c2UvbWwtMTAway9zb3J0L291dC9wYXJ0LXItMDAwMDM=.idx
+4	755	943	189	/user/at15/warehouse/ml-100k/index/idx/L3VzZXIvYXQxNS93YXJlaG91c2UvbWwtMTAway9zb3J0L291dC9wYXJ0LXItMDAwMDQ=.idx
