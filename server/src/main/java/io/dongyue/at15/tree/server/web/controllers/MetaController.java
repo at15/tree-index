@@ -36,8 +36,9 @@ public class MetaController {
         // use a ugly singleton
         if (MetaManager.inMem(table)) {
             return "got " + table + " in memory";
+        } else {
+            MetaManager.load(table);
+            return "load " + table + " for the first time";
         }
-
-        return table;
     }
 }

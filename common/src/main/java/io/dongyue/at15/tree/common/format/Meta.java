@@ -40,7 +40,7 @@ public class Meta {
     }
 
     public Integer[] getRange() {
-        // FIXME: range is redundant, but can just return {start,end};
+        // FIXME: range is redundant, but can't just return {start,end};
         Integer[] range = {start, end};
         return range;
     }
