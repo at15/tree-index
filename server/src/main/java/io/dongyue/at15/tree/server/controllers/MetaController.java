@@ -16,7 +16,7 @@ import java.io.IOException;
  * Created by at15 on 16-1-2.
  */
 @RestController
-@CrossOrigin
+//@CrossOrigin()
 public class MetaController {
     @Autowired
     private FsShell shell;
@@ -31,6 +31,7 @@ public class MetaController {
 
     @RequestMapping("/{table}/meta")
     public String meta(@PathVariable String table) {
+        // if the meta table doest not exist
         return table;
     }
 }

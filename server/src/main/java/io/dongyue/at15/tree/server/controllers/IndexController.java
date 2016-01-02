@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Index
  */
 @RestController
-@CrossOrigin
+//@CrossOrigin
 public class IndexController {
     @RequestMapping("/")
     public String index() {
