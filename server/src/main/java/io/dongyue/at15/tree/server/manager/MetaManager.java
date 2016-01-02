@@ -34,5 +34,9 @@ public class MetaManager {
         }
     }
 
+    public static boolean inMem(String tableName) {
+        return false;
+    }
+
 
 }
