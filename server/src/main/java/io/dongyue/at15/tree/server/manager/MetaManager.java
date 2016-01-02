@@ -63,6 +63,7 @@ public class MetaManager {
 
     // TODO: do sth here to avoid not existing one?
     public static MetaTable getTable(String tableName) {
+        LOGGER.info("get table " + tableName);
         return metaTableMap.get(tableName);
     }
 

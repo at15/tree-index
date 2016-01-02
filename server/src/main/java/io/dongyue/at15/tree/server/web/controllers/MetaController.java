@@ -6,6 +6,9 @@ import io.dongyue.at15.tree.server.manager.MetaManager;
 import org.apache.hadoop.fs.FileStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.hadoop.fs.FsShell;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,8 +32,8 @@ public class MetaController {
         return "lalala";
     }
 
-    @RequestMapping("/{table}/meta")
-    public MetaTable meta(@PathVariable String table) throws IOException {
+    @RequestMapping(value = "/{table}/meta", headers = "Accept=*/*", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MetaTable> meta(@PathVariable String table) throws IOException {
         // try to load from memory
         // try to load from hdfs and then into memory
         // use a ugly singleton
@@ -43,6 +46,6 @@ public class MetaController {
         if (!MetaManager.inMem(table)) {
             MetaManager.loadFromHDFS(table);
         }
-        return MetaManager.getTable(table);
+        return new ResponseEntity<MetaTable>(MetaManager.getTable(table), HttpStatus.OK);
     }
 }

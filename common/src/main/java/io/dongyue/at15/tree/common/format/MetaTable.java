@@ -1,5 +1,7 @@
 package io.dongyue.at15.tree.common.format;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +35,13 @@ public class MetaTable {
     }
 
     // TODO: should throw some exception
+    @JsonIgnore
     public Meta getRow(Integer row) {
         return rows.get(row);
+    }
+
+    @JsonValue
+    public ArrayList<Meta> getRows() {
+        return rows;
     }
 }
