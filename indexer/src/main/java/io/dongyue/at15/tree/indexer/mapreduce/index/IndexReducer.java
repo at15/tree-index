@@ -72,8 +72,6 @@ public class IndexReducer extends
         Path idxFile = new Path(indexFilePath);
         String indexFileRemotePath = remoteIndex + "/" + indexFileName + ".idx";
         Path idxFileHDFS = new Path(indexFileRemotePath);
-        // TODO: create the folder in driver
-        // NOTE: MUST create folder before this step
         fs.copyFromLocalFile(true, true, idxFile, idxFileHDFS);
         LOGGER.info("upload completed");
 

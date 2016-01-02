@@ -30,7 +30,9 @@ public class MetaController {
 
     @RequestMapping("/{table}/meta")
     public String meta(@PathVariable String table) {
-        // if the meta table doest not exist, we load it from HDFS
+        // try to load from memory
+        // try to load from hdfs and then into memory
+        // use a ugly singleton
 
         return table;
     }
