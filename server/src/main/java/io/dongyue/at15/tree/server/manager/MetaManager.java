@@ -45,8 +45,9 @@ public class MetaManager {
         return metaTableMap.containsKey(tableName);
     }
 
-    public static void load(String tableName) {
-        // FIXME: impl
+    public static void loadFromHDFS(String tableName) {
+        // copy to local
+        shell.copyToLocal();
         metaTableMap.put(tableName, new MetaTable());
     }
 

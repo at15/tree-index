@@ -34,11 +34,15 @@ public class MetaController {
         // try to load from memory
         // try to load from hdfs and then into memory
         // use a ugly singleton
-        if (MetaManager.inMem(table)) {
-            return "got " + table + " in memory";
-        } else {
-            MetaManager.load(table);
-            return "load " + table + " for the first time";
+//        if (MetaManager.inMem(table)) {
+//            return "got " + table + " in memory";
+//        } else {
+//            MetaManager.load(table);
+//            return "load " + table + " for the first time";
+//        }
+        if (!MetaManager.inMem(table)) {
+            MetaManager.loadFromHDFS(table);
         }
+        return "aha";
     }
 }
