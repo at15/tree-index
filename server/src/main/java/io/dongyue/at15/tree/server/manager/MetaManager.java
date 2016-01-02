@@ -47,7 +47,10 @@ public class MetaManager {
 
     public static void loadFromHDFS(String tableName) {
         // copy to local
-        shell.copyToLocal();
+        // TODO: 1. hadoop throw null pointer exception
+        // 2. catch the exception and show proper error page
+        shell.copyToLocal("/user/at15/warehouse/" + tableName + "/meta/out/part-r-00000", localMetaFolder + "/" + tableName);
+        // TODO: load it in memory
         metaTableMap.put(tableName, new MetaTable());
     }
 
