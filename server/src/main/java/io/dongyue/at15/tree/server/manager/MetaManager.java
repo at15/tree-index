@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.hadoop.fs.FsShell;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,13 +46,24 @@ public class MetaManager {
         return metaTableMap.containsKey(tableName);
     }
 
-    public static void loadFromHDFS(String tableName) {
+    public static void loadFromHDFS(String tableName) throws IOException {
         // copy to local
         // TODO: 1. hadoop throw null pointer exception
         // 2. catch the exception and show proper error page
-        shell.copyToLocal("/user/at15/warehouse/" + tableName + "/meta/out/part-r-00000", localMetaFolder + "/" + tableName);
-        // TODO: load it in memory
-        metaTableMap.put(tableName, new MetaTable());
+        String localPath = localMetaFolder + "/" + tableName;
+        File localFile = new File(localPath);
+        if (localFile.exists()) {
+            if (!localFile.delete()) {
+                throw new IOException("cant delete existing local copy " + localPath);
+            }
+        }
+        shell.copyToLocal("/user/at15/warehouse/" + tableName + "/meta/out/part-r-00000", localPath);
+        metaTableMap.put(tableName, new MetaTable(localFile));
+    }
+
+    // TODO: do sth here to avoid not existing one?
+    public static MetaTable getTable(String tableName) {
+        return metaTableMap.get(tableName);
     }
 
 }

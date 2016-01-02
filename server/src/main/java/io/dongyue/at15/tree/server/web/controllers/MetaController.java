@@ -1,6 +1,7 @@
 package io.dongyue.at15.tree.server.web.controllers;
 
 
+import io.dongyue.at15.tree.common.format.MetaTable;
 import io.dongyue.at15.tree.server.manager.MetaManager;
 import org.apache.hadoop.fs.FileStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,6 @@ import java.io.IOException;
  * Created by at15 on 16-1-2.
  */
 @RestController
-//@CrossOrigin()
 public class MetaController {
     @Autowired
     private FsShell shell;
@@ -30,7 +30,7 @@ public class MetaController {
     }
 
     @RequestMapping("/{table}/meta")
-    public String meta(@PathVariable String table) {
+    public MetaTable meta(@PathVariable String table) throws IOException {
         // try to load from memory
         // try to load from hdfs and then into memory
         // use a ugly singleton
@@ -43,6 +43,6 @@ public class MetaController {
         if (!MetaManager.inMem(table)) {
             MetaManager.loadFromHDFS(table);
         }
-        return "aha";
+        return MetaManager.getTable(table);
     }
 }
