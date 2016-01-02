@@ -57,7 +57,11 @@ public class MetaManager {
                 throw new IOException("cant delete existing local copy " + localPath);
             }
         }
-        shell.copyToLocal("/user/at15/warehouse/" + tableName + "/meta/out/part-r-00000", localPath);
+        try {
+            shell.copyToLocal("/user/at15/warehouse/" + tableName + "/meta/out/part-r-00000", localPath);
+        } catch (NullPointerException springBug) {
+            throw new IOException("table " + tableName + " does not exists", springBug);
+        }
         metaTableMap.put(tableName, new MetaTable(localFile));
     }
 

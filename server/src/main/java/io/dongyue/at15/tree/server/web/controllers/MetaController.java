@@ -3,6 +3,7 @@ package io.dongyue.at15.tree.server.web.controllers;
 
 import io.dongyue.at15.tree.common.format.MetaTable;
 import io.dongyue.at15.tree.server.manager.MetaManager;
+import io.dongyue.at15.tree.server.web.ResponseWrapper;
 import org.apache.hadoop.fs.FileStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.hadoop.fs.FsShell;
@@ -33,19 +34,22 @@ public class MetaController {
     }
 
     @RequestMapping(value = "/{table}/meta")
-    public ResponseEntity<MetaTable> meta(@PathVariable String table) throws IOException {
-        // try to load from memory
-        // try to load from hdfs and then into memory
-        // use a ugly singleton
-//        if (MetaManager.inMem(table)) {
-//            return "got " + table + " in memory";
-//        } else {
-//            MetaManager.load(table);
-//            return "load " + table + " for the first time";
-//        }
-        if (!MetaManager.inMem(table)) {
-            MetaManager.loadFromHDFS(table);
+    public ResponseEntity<ResponseWrapper> meta(@PathVariable String table) throws IOException {
+        ResponseWrapper wrapper = new ResponseWrapper();
+        try {
+            if (!MetaManager.inMem(table)) {
+                MetaManager.loadFromHDFS(table);
+            }
+            wrapper.setData(MetaManager.getTable(table));
+            wrapper.setCode(HttpStatus.OK);
+            return new ResponseEntity<ResponseWrapper>(wrapper, wrapper.getCode());
+        } catch (IOException ex) {
+            wrapper.setMsg(ex.getMessage());
+            wrapper.setCode(HttpStatus.INTERNAL_SERVER_ERROR);
+            if (ex.getMessage().contains("not exists")) {
+                wrapper.setCode(HttpStatus.NOT_FOUND);
+            }
+            return new ResponseEntity<ResponseWrapper>(wrapper, wrapper.getCode());
         }
-        return new ResponseEntity<MetaTable>(MetaManager.getTable(table), HttpStatus.OK);
     }
 }
