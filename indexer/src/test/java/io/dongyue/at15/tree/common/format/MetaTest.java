@@ -1,4 +1,4 @@
-package io.dongyue.at15.tree.indexer.format;
+package io.dongyue.at15.tree.common.format;
 
 import org.junit.Assert;
 import org.junit.Test;

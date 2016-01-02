@@ -1,4 +1,4 @@
-package io.dongyue.at15.tree.indexer.format;
+package io.dongyue.at15.tree.common.format;
 
 /**
  * Created by at15 on 15-12-26.

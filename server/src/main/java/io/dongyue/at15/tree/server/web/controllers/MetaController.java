@@ -1,6 +1,7 @@
 package io.dongyue.at15.tree.server.web.controllers;
 
 
+import io.dongyue.at15.tree.server.manager.MetaManager;
 import org.apache.hadoop.fs.FileStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.hadoop.fs.FsShell;
@@ -33,6 +34,9 @@ public class MetaController {
         // try to load from memory
         // try to load from hdfs and then into memory
         // use a ugly singleton
+        if (MetaManager.inMem(table)) {
+            return "got " + table + " in memory";
+        }
 
         return table;
     }

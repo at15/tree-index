@@ -8,6 +8,8 @@ import java.io.File;
 
 /**
  * Created by at15 on 16-1-2.
+ *
+ * manage all the meta info
  */
 public class MetaManager {
     public static final String localMetaFolder = "/tmp/tree/meta";
@@ -35,6 +37,7 @@ public class MetaManager {
     }
 
     public static boolean inMem(String tableName) {
+
         return false;
     }
 

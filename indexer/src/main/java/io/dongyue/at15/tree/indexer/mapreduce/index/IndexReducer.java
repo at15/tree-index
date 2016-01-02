@@ -1,6 +1,6 @@
 package io.dongyue.at15.tree.indexer.mapreduce.index;
 
-import io.dongyue.at15.tree.indexer.format.Meta;
+import io.dongyue.at15.tree.common.format.Meta;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
