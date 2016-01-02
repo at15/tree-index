@@ -1,6 +1,5 @@
-package io.dongyue.at15.tree.server.controllers;
+package io.dongyue.at15.tree.server.web.controllers;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 

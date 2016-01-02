@@ -24,7 +24,7 @@
         <dependency>
             <groupId>io.dongyue.at15.tree-index</groupId>
             <artifactId>common</artifactId>
-            <version>0.0.1</version>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <!-- hadoop -->
